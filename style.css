@@ -1,0 +1,209 @@
+@font-face {
+	font-family: 'Berkeley Mono Trial';
+	src: url('BerkeleyMonoTrial-Regular.otf');
+}
+
+:root {
+	--main-font-stack: 'Berkeley Mono Trial', ui-monospace, 'Menlo', 'Monaco',
+		'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono',
+		'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono',
+		'Courier New', monospace;
+	--orange: #ffa500;
+	--darkerorange: #e69726;
+	--inverseblue: #2675e6;
+}
+
+.name {
+	font-family: var(--main-font-stack);
+	font-size: 18px;
+	margin-top: 0.6em;
+}
+
+body {
+	font-family: var(--main-font-stack);
+	font-size: 14px;
+}
+
+a {
+	color: var(--inverseblue);
+	text-decoration: none;
+}
+
+a:not(.button):visited {
+	color: var(--darkerorange);
+}
+
+a:not(.button):hover {
+	text-decoration: underline;
+}
+
+#menu {
+	margin-top: 0.4em;
+	width: auto;
+	font-family: var(--main-font-stack);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#menu ul {
+	list-style-type: none;
+	padding: 0;
+	margin-left: 0.4em;
+	display: flex;
+}
+
+.menu-buttons-wrapper {
+	flex-wrap: wrap;
+	margin: 0.4em auto 0;
+}
+
+.menu-buttons-wrapper li {
+	flex-basis: auto;
+	box-sizing: border-box;
+	margin-left: 0.4em;
+	margin-top: 0.6em;
+}
+
+.button {
+	display: inline-block;
+	padding: 0.4em 0.6em;
+	font-size: 14px;
+	font-family: var(--main-font-stack);
+	text-align: center;
+	cursor: pointer;
+	color: #000;
+	background-color: #fff;
+	border: 1px solid #000;
+	border-radius: 0;
+	box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+	text-decoration: none;
+	margin-right: 0.4em;
+}
+
+.button:hover {
+	background-color: #f3f3f3;
+}
+
+.button:active {
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+	transform: translateY(2px) translateX(2px);
+}
+
+.table {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	text-align: left;
+	border-top: 2px dotted #ddd; /* Add border-top style */
+	border-bottom: 2px dotted #ddd; /* Add border-bottom style */
+}
+
+.table.table-striped tbody tr:nth-of-type(odd) {
+	background: #eee;
+}
+
+.table tbody tr.active,
+.table.table-striped tbody tr.active {
+	background: #e6e6e6;
+}
+
+.table.table-hover tbody tr:hover {
+	background: #e6e6e6;
+}
+
+.table.table-scroll {
+	display: block;
+	overflow-x: auto;
+	padding-bottom: 0.5rem;
+	white-space: nowrap;
+}
+
+.table td {
+	overflow: hidden;
+	padding: 0.3rem 0.4rem 0;
+	text-overflow: ellipsis;
+	border-left: 4px solid #999; /* Add border-left style */
+	border-right: 4px solid #999; /* Add border-right style */
+	background: #fff; /* Add background color */
+	box-shadow: 2px 2px #ddd; /* Add box-shadow */
+}
+
+.table th {
+	padding: 0.3rem 0.4rem 0;
+	border-bottom: 1px solid black;
+}
+
+.table tbody th {
+	border: 1px solid #bfbfbf;
+}
+
+.table tbody th:first-child,
+.table tbody td:first-child {
+	border-left: none; /* Remove left border for first column */
+}
+
+.table tbody th:last-child,
+.table tbody td:last-child {
+	border-right: none; /* Remove right border for last column */
+}
+
+.table tbody th,
+.table tbody td {
+	font-size: 1em !important; /* Override font size */
+}
+
+@media (min-width: 768px) {
+	#menu {
+		padding-left: calc((100vw - 768px) * 0.5);
+		padding-right: calc((100vw - 768px) * 0.5);
+	}
+
+	#content {
+		padding-left: calc((100vw - 768px) * 0.5);
+		padding-right: calc((100vw - 768px) * 0.5);
+	}
+}
+
+#content {
+	margin: 0 auto;
+	width: auto;
+}
+
+#content h1,
+#content h2,
+#content h3 {
+	font-family: var(--main-font-stack);
+	margin: 0;
+	padding-top: 0.4em;
+}
+
+#content .byline,
+#content .byline a,
+#content .note {
+	font-size: 10px;
+	color: #aaa;
+}
+
+#content p,
+#content ul {
+	color: #333;
+	line-height: 18px;
+	padding-top: 0.4em;
+}
+
+#content li {
+	margin-bottom: 0.4em;
+}
+
+#content dl {
+	margin-left: 1em;
+}
+
+#content dd {
+	margin: 1em;
+}
+
+.no-wrap {
+	white-space: nowrap;
+}
