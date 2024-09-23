@@ -1,209 +1,304 @@
+/* Import Berkeley Mono Font */
 @font-face {
-	font-family: 'Berkeley Mono Trial';
-	src: url('BerkeleyMonoTrial-Regular.otf');
+  font-family: 'Berkeley Mono';
+  src: url('../fonts/BerkeleyMonoTrial-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+/* Root Variables for Consistent Styling */
 :root {
-	--main-font-stack: 'Berkeley Mono Trial', ui-monospace, 'Menlo', 'Monaco',
-		'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono',
-		'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono',
-		'Courier New', monospace;
-	--orange: #ffa500;
-	--darkerorange: #e69726;
-	--inverseblue: #2675e6;
+  --primary-color: #2675e6;
+  --secondary-color: #ffa500;
+  --accent-color: #e69726;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --light-gray: #f3f3f3;
+  --max-width: 1200px;
+  --padding: 20px;
+  --transition-speed: 0.3s;
 }
 
-.name {
-	font-family: var(--main-font-stack);
-	font-size: 18px;
-	margin-top: 0.6em;
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font-family: var(--main-font-stack);
-	font-size: 14px;
+  font-family: 'Berkeley Mono', monospace;
+  font-size: 16px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-a {
-	color: var(--inverseblue);
-	text-decoration: none;
-}
-
-a:not(.button):visited {
-	color: var(--darkerorange);
-}
-
-a:not(.button):hover {
-	text-decoration: underline;
+/* Header and Menu Styles */
+header {
+  background-color: var(--light-gray);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 #menu {
-	margin-top: 0.4em;
-	width: auto;
-	font-family: var(--main-font-stack);
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-#menu ul {
-	list-style-type: none;
-	padding: 0;
-	margin-left: 0.4em;
-	display: flex;
+.name {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.name svg {
+  margin-right: 8px;
 }
 
 .menu-buttons-wrapper {
-	flex-wrap: wrap;
-	margin: 0.4em auto 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-buttons-wrapper li {
-	flex-basis: auto;
-	box-sizing: border-box;
-	margin-left: 0.4em;
-	margin-top: 0.6em;
+  margin-left: 10px;
 }
 
-.button {
-	display: inline-block;
-	padding: 0.4em 0.6em;
-	font-size: 14px;
-	font-family: var(--main-font-stack);
-	text-align: center;
-	cursor: pointer;
-	color: #000;
-	background-color: #fff;
-	border: 1px solid #000;
-	border-radius: 0;
-	box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
-	text-decoration: none;
-	margin-right: 0.4em;
+.button, .dropbtn {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 1em;
+  color: #fff;
+  background-color: var(--secondary-color);
+  border: none;
+  text-decoration: none;
+  transition: background-color var(--transition-speed) ease;
 }
 
-.button:hover {
-	background-color: #f3f3f3;
+.button:hover, .dropbtn:hover {
+  background-color: var(--accent-color);
 }
 
-.button:active {
-	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
-	transform: translateY(2px) translateX(2px);
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
 }
 
-.table {
-	width: 100%;
-	border-spacing: 0;
-	border-collapse: collapse;
-	text-align: left;
-	border-top: 2px dotted #ddd; /* Add border-top style */
-	border-bottom: 2px dotted #ddd; /* Add border-bottom style */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-.table.table-striped tbody tr:nth-of-type(odd) {
-	background: #eee;
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.table tbody tr.active,
-.table.table-striped tbody tr.active {
-	background: #e6e6e6;
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
 }
 
-.table.table-hover tbody tr:hover {
-	background: #e6e6e6;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-.table.table-scroll {
-	display: block;
-	overflow-x: auto;
-	padding-bottom: 0.5rem;
-	white-space: nowrap;
+/* Hamburger Menu Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
 }
 
-.table td {
-	overflow: hidden;
-	padding: 0.3rem 0.4rem 0;
-	text-overflow: ellipsis;
-	border-left: 4px solid #999; /* Add border-left style */
-	border-right: 4px solid #999; /* Add border-right style */
-	background: #fff; /* Add background color */
-	box-shadow: 2px 2px #ddd; /* Add box-shadow */
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background-color: var(--text-color);
+  margin: 3px 0;
+  transition: 0.4s;
 }
 
-.table th {
-	padding: 0.3rem 0.4rem 0;
-	border-bottom: 1px solid black;
-}
-
-.table tbody th {
-	border: 1px solid #bfbfbf;
-}
-
-.table tbody th:first-child,
-.table tbody td:first-child {
-	border-left: none; /* Remove left border for first column */
-}
-
-.table tbody th:last-child,
-.table tbody td:last-child {
-	border-right: none; /* Remove right border for last column */
-}
-
-.table tbody th,
-.table tbody td {
-	font-size: 1em !important; /* Override font size */
-}
-
-@media (min-width: 768px) {
-	#menu {
-		padding-left: calc((100vw - 768px) * 0.5);
-		padding-right: calc((100vw - 768px) * 0.5);
-	}
-
-	#content {
-		padding-left: calc((100vw - 768px) * 0.5);
-		padding-right: calc((100vw - 768px) * 0.5);
-	}
+/* Main Content Styles */
+main {
+  max-width: var(--max-width);
+  margin: 20px auto;
+  padding: 0 var(--padding);
 }
 
 #content {
-	margin: 0 auto;
-	width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#content h1,
-#content h2,
-#content h3 {
-	font-family: var(--main-font-stack);
-	margin: 0;
-	padding-top: 0.4em;
+#content > p {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-#content .byline,
-#content .byline a,
-#content .note {
-	font-size: 10px;
-	color: #aaa;
+/* Aside Styles */
+aside {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#content p,
+aside img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.biodata {
+  width: 100%;
+}
+
+.biodata ul {
+  padding-left: 20px;
+}
+
+.biodata ul ul {
+  padding-left: 20px;
+}
+
+/* Projects and Table Styles */
+#content h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 #content ul {
-	color: #333;
-	line-height: 18px;
-	padding-top: 0.4em;
+  list-style-type: disc;
+  padding-left: 20px;
 }
 
-#content li {
-	margin-bottom: 0.4em;
+.table {
+  width: 100%;
+  margin-top: 20px;
 }
 
-#content dl {
-	margin-left: 1em;
+.table p {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-#content dd {
-	margin: 1em;
+.table.content {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.no-wrap {
-	white-space: nowrap;
+.table.content td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Footer Styles */
+footer {
+  background-color: var(--light-gray);
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 40px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu-buttons-wrapper {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--light-gray);
+    padding: 10px 0;
+  }
+
+  .menu-buttons-wrapper.active {
+    display: flex;
+  }
+
+  .menu-buttons-wrapper li {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .dropdown-content {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  aside {
+    flex-direction: column;
+  }
+
+  aside img {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .biodata {
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  aside {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  aside img {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  .biodata {
+    flex: 1;
+  }
+}
+
+@media (min-width: 1025px) {
+  aside {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  aside img {
+    margin-right: 40px;
+    margin-bottom: 0;
+  }
+
+  .biodata {
+    flex: 1;
+  }
 }
