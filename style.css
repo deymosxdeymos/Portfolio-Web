@@ -183,6 +183,32 @@ aside img {
   padding-left: 20px;
 }
 
+/* Article Styles */
+article {
+  width: 100%;
+  background-color: var(--light-gray);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+article h2 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+article h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+}
+
+article p {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+
+
 /* Projects and Table Styles */
 #content h2 {
   margin-top: 20px;
